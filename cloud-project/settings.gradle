@@ -1,0 +1,4 @@
+rootProject.name = 'synopsis-eval-v4'
+include 'cloud-config'
+include 'cloud-api'
+include 'cloud-discovery'

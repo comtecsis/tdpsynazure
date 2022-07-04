@@ -16,6 +16,9 @@ target/
 # Gradle
 **.gradle/**
 
+### Eclipse
+*/bin/
+
 ### IntelliJ IDEA ###
 **.idea
 **.iws

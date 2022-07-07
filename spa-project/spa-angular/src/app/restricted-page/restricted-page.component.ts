@@ -1,5 +1,6 @@
 import { MsalService } from '@azure/msal-angular';
 import { Component, OnInit } from '@angular/core';
+import { InteractionRequiredAuthError } from 'msal';
 
 @Component({
   selector: 'app-restricted-page',
@@ -15,12 +16,15 @@ export class RestrictedPageComponent implements OnInit {
       return 'unknown'
     }
 
-    console.log(JSON.stringify(this.authService.instance.getActiveAccount()));
-
     return this.authService.instance.getActiveAccount().name
+  }
+
+  callApi = (accessToken) => {
+    console.log(accessToken);
   }
 
   ngOnInit(): void {
   }
 
 }
+

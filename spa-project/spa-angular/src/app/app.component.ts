@@ -11,16 +11,21 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'My Microsoft Login- Example';
+  loginIsPopUp = true;
 
   constructor(private authService: MsalService) {
 
   }
+
+  onSucessLogin = ( response: AuthenticationResult ) => {
+      this.authService.instance.setActiveAccount(response?.account);
+      console.log("Token de acceso: " + response?.accessToken);
+  }
+
   ngOnInit(): void {
-    this.authService.instance.handleRedirectPromise().then( res => {
-      if (res != null && res.account != null) {
-        this.authService.instance.setActiveAccount(res.account)
-      }
-    })
+    if(!this.loginIsPopUp) {
+      this.authService.instance.handleRedirectPromise().then(this.onSucessLogin);
+    }
   }
 
   isLoggedIn(): boolean {
@@ -28,12 +33,17 @@ export class AppComponent implements OnInit {
   }
 
   login() {
-    // this.authService.loginRedirect();
-
-    this.authService.loginPopup({scopes: ["openid", "offline_access", "https://tdpsynopsis.onmicrosoft.com/ec5845d9-1d86-4da3-aecc-ed981b1d1dcb/Read"]})
-      .subscribe((response: AuthenticationResult) => {
-        this.authService.instance.setActiveAccount(response.account);
-      });
+    if(this.loginIsPopUp) {
+      this.authService.loginPopup({scopes: ["openid", "offline_access", "https://tdpsynopsis.onmicrosoft.com/ec5845d9-1d86-4da3-aecc-ed981b1d1dcb/Read"]})
+        .subscribe(( response: AuthenticationResult ) => {
+          if(response != null) {
+            this.authService.instance.setActiveAccount(response.account);
+            console.log("Token de acceso: " + response.accessToken);
+          }
+        });
+    }else{
+      this.authService.loginRedirect({scopes: ["openid", "offline_access", "https://tdpsynopsis.onmicrosoft.com/ec5845d9-1d86-4da3-aecc-ed981b1d1dcb/Read"]});
+    }
   }
 
   logout() {

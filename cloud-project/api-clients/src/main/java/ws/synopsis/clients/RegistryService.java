@@ -1,4 +1,4 @@
-package ws.synopsis;
+package ws.synopsis.clients;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

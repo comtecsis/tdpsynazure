@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "8320ccaa-8a54-4c6a-bf7a-166aa967de5d",
+		"name": "client-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3082006"
+	},
+	"item": [
+		{
+			"name": "List Clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{SERVER_PORT}}/clients",
+					"protocol": "https",
+					"host": [
+						"{{SERVER_PORT}}"
+					],
+					"path": [
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Elvis\",\n    \"lastname\": \"Perez\",\n    \"docNum\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{SERVER_PORT}}/clients",
+					"protocol": "https",
+					"host": [
+						"{{SERVER_PORT}}"
+					],
+					"path": [
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{SERVER_PORT}}/clients",
+					"protocol": "https",
+					"host": [
+						"{{SERVER_PORT}}"
+					],
+					"path": [
+						"clients"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SERVER_PORT",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}

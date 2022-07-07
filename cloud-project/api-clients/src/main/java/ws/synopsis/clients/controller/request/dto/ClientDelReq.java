@@ -1,4 +1,6 @@
-package ws.synopsis.clients.dto;
+package ws.synopsis.clients.controller.request.dto;
+
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientDTO {
+public class ClientDelReq {
+	@NotNull
 	private Long id;
-	private String name;
-	private String lastname;
-	private String docNum;
 }

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @EnableConfigServer
-@PropertySource(value = {"file://${cloudproject.home}/properties/cloud-config.properties"})
+@PropertySource(value = {"file://${cloudproject.home}/cloud-config.properties"})
 public class ConfigServer {
 	public static void main(String[] args) {
 		SpringApplication.run(ConfigServer.class, args);

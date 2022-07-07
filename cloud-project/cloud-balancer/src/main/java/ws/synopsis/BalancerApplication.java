@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@PropertySource(value = { "file://${cloudproject.home}/properties/cloud-balancer.properties" })
+@PropertySource(value = { "file://${cloudproject.home}/cloud-balancer.properties" })
 public class BalancerApplication {
 	
 	public static void main(String[] args) {

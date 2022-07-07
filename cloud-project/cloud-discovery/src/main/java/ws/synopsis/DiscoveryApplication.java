@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @EnableEurekaServer
 @SpringBootApplication
-@PropertySource(value = {"file://${cloudproject.home}/properties/cloud-discovery.properties"})
+@PropertySource(value = {"file://${cloudproject.home}/cloud-discovery.properties"})
 public class DiscoveryApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DiscoveryApplication.class, args);

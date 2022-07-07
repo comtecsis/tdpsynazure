@@ -16,11 +16,11 @@ spring:
         registration:
           azure-client:
             provider: azure-ad
-            client-id: 26ef781f-53df-47a7-a009-dc338ad3dfb2
-            client-secret: f6111a31-5281-420b-ae89-135f3d82d0c7
+            client-id: 8db14fbd-165d-4326-b8db-432653548fec
+            client-secret: WCN8Q~_4Lsjtpb314mxqEyDOiyl9PqKMZIODwce7
             authorization-grant-type: authorization_code
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
-            scope: openid, email, profile
+            scope: openid, https://tdpsynopsis.onmicrosoft.com/ec5845d9-1d86-4da3-aecc-ed981b1d1dcb/Read
             client-authentication-method: post
 server:
   forward-headers-strategy: native

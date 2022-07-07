@@ -3,3 +3,4 @@ keytool -certreq -alias tdpsynopsis -file tdpsynopsis.csr -keystore tdpsynopsis.
 keytool -genkeypair -alias tdpsynopsis -keyalg RSA -storetype PKCS12 -keystore tdpsynopsis.p12
 keytool -keystore tdpsynopsis.p12 -storetype pkcs12 -exportcert -file tdpsynopsis.crt -rfc -alias tdpsynopsis
 pwd S1n0ps1s2021$$
+secret WCN8Q~_4Lsjtpb314mxqEyDOiyl9PqKMZIODwce7

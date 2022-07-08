@@ -1,6 +1,7 @@
 package ws.synopsis.clients.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.core.convert.ConversionService;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,7 +25,7 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public List<ClientDTO> list() {
-		return repository.findAll().stream().map((client) -> converters.convert(client, ClientDTO.class)).toList();
+		return repository.findAll().stream().map((client) -> converters.convert(client, ClientDTO.class)).collect(Collectors.toList());
 	}
 
 	public ClientDTO add(ClientAddReq client) {

@@ -28,6 +28,23 @@ dependencyManagement {
   }
 }
 
+task copyToLib( type: Copy ) {
+    into "$buildDir/libs/libs"
+    from configurations.implementation
+}
+
+project.configurations.implementation.setCanBeResolved(true)
+
+jar{
+    manifest {
+        attributes(
+                "Main-Class": "ws.synopsis.ConfigServer",                
+                "Class-Path":  configurations.runtimeClasspath.files.collect { 'libs/' + it.name }.join(' ')              
+        )
+    }
+    dependsOn ('copyToLib')
+}
+
 tasks.named('test') {
   useJUnitPlatform()
 }

@@ -13,3 +13,25 @@ cloudproperties.home=[[RUTA_PROYECTO]]/cloud-project/properties/cloud
 <br/>
 [Protect serverless APIs with Azure API Management and Azure AD B2C for consumption from a SPA](https://docs.microsoft.com/en-us/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c)
 <br/><br/>
+# **Compilacion**
+```
+path_project="$(pwd)"
+cd "${path_project}/compile"
+sh compile.sh
+```
+# **Lanzar Servicios**
+```
+path_project="$(pwd)"
+cd "${path_project}/compile/artifacts/cloud-config"
+sh start.sh
+cd "${path_project}/compile/artifacts/api-clients"
+sh start.sh
+```
+# **Detener Servicios**
+```
+path_project="$(pwd)"
+cd "${path_project}/compile/artifacts/api-clients"
+sh stop.sh
+cd "${path_project}/compile/artifacts/cloud-config"
+sh stop.sh
+```

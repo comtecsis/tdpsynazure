@@ -54,8 +54,8 @@ sh docker_compile.sh
 # **Lanzar imagenes de Docker con instancia unica**
 ```
 docker network create tdpsynaks-net
-docker run -d -p 8888:8888 --net tdpsynaks-net --name tdpsynaks.server.config boot-cloud-config
-docker run -d -e SERVER_CONFIG_URI=http://tdpsynaks.server.config:8888 -p 8080:8080 --net tdpsynaks-net --name tdpsynaks.api.clients boot-api-clients
+docker run -d -p 8888:8888 --net tdpsynaks-net --name tdpsynaks.server.config local/boot-cloud-config
+docker run -d -e SERVER_CONFIG_URI=http://tdpsynaks.server.config:8888 -p 8080:8080 --net tdpsynaks-net --name tdpsynaks.api.clients local/boot-api-clients
 ```
 <br/>
 
@@ -66,4 +66,16 @@ docker rm tdpsynaks.server.config
 docker stop tdpsynaks.api.clients
 docker rm tdpsynaks.api.clients
 docker network rm tdpsynaks-net
+```
+<br/>
+
+# **Publicar la imagen en el ECR**
+```
+az login
+TOKEN=$(az acr login --name tdpsynregistry --expose-token --output tsv --query accessToken)
+docker login tdpsynregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
+docker tag local/boot-cloud-config tdpsynregistry.azurecr.io/boot-cloud-config
+docker push tdpsynregistry.azurecr.io/boot-cloud-config
+docker tag local/boot-api-clients tdpsynregistry.azurecr.io/boot-api-clients
+docker push tdpsynregistry.azurecr.io/boot-api-clients
 ```

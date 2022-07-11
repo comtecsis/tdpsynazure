@@ -1,6 +1,8 @@
 #!/bin/sh
 path_current="$(pwd)"
 
+ecr_repo_name=local
+
 mkdir -p "${path_current}/logs"
 cd "${path_current}/logs"
 path_logs="$(pwd)"
@@ -39,7 +41,7 @@ cp -r "${path_ssl}/project-ssl.properties" "${path_cloud_config}/ssl/project-ssl
 cd "${path_cloud_config}"
 docker image rm boot-cloud-config
 docker build \
--t boot-cloud-config .
+-t "${ecr_repo_name}/boot-cloud-config" .
 
 # Compile api-clients
 cp -r "${path_artifacts}/api-clients" "${path_current}"
@@ -51,4 +53,4 @@ cp -r "${path_ssl}/project-ssl.properties" "${path_api_clients}/ssl/project-ssl.
 cd "${path_api_clients}"
 docker image rm boot-api-clients
 docker build \
--t boot-api-clients .
+-t "${ecr_repo_name}/boot-api-clients" .
